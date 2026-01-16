@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('preset').addEventListener('input', function() {
         refreshURL();
         refreshPreview();
-    })
+    });
 
     loadPresets();
     MailtoAnywhere.getSettings(function(settings) {
@@ -63,7 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }, function() {
             window.close();
         });
-    })
+    });
 });
-
 
