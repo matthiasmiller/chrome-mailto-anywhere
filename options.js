@@ -57,9 +57,15 @@ document.addEventListener('DOMContentLoaded', function() {
         refreshPreview();
     });
 
+    MailtoAnywhere.getOpenInNewWindow(function(openInNewWindow) {
+        document.getElementById('openInNewWindow').checked = openInNewWindow;
+    });
+
     document.getElementById('save').addEventListener('click', function() {
         MailtoAnywhere.setTemplate(document.getElementById('url').value, function() {
-            window.close();
+            MailtoAnywhere.setOpenInNewWindow(document.getElementById('openInNewWindow').checked, function() {
+                window.close();
+            });
         });
     })
 });

@@ -33,6 +33,22 @@ const MailtoAnywhere = (function() {
             });
         },
 
+        getOpenInNewWindow: function (callback) {
+            chrome.storage.sync.get({
+                openInNewWindow: true
+            }, function (items) {
+                callback(items.openInNewWindow);
+            });
+        },
+
+        setOpenInNewWindow: function (openInNewWindow, callback) {
+            chrome.storage.sync.set({
+                openInNewWindow: openInNewWindow
+            }, function() {
+                callback();
+            });
+        },
+
         parseURL: function (template, mailto) {
             const url = new URL(mailto);
 

@@ -7,7 +7,13 @@
 
             MailtoAnywhere.getTemplate(function(urlTemplate) {
                 const url = MailtoAnywhere.parseURL(urlTemplate, e.target.href);
-                window.open(url);
+                MailtoAnywhere.getOpenInNewWindow(function(openInNewWindow) {
+                    if (openInNewWindow) {
+                        window.open(url);
+                    } else {
+                        window.location.href = url;
+                    }
+                });
             });
         }
     });
