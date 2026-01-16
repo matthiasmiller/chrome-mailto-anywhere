@@ -1,7 +1,7 @@
 (function() {
     document.addEventListener("click", function (e) {
-        if (e.target.tagName == 'A' &&
-            e.target.href.toLowerCase().indexOf('mailto:') == 0) {
+        if (e.target.tagName === 'A' &&
+            e.target.href.toLowerCase().startsWith('mailto:')) {
 
             e.preventDefault(); // Prevent a link from following the URL
 

@@ -1,15 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     function loadPresets() {
-        document.getElementById('preset').appendChild(document.createElement('OPTION'));
+        document.getElementById('preset').appendChild(document.createElement('option'));
 
         const presets = MailtoAnywhere.getPresets();
         for (const key in presets) {
-            if (presets.hasOwnProperty(key)) {
-                const opt = document.createElement('OPTION');
-                opt.setAttribute('value', presets[key]);
-                opt.appendChild(document.createTextNode(key));
-                document.getElementById('preset').appendChild(opt);
-            }
+            const opt = document.createElement('option');
+            opt.setAttribute('value', presets[key]);
+            opt.appendChild(document.createTextNode(key));
+            document.getElementById('preset').appendChild(opt);
         }
     }
 

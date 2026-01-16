@@ -52,24 +52,24 @@ const MailtoAnywhere = (function() {
         parseURL: function (template, mailto) {
             const url = new URL(mailto);
 
-            const dest = template.replace(/{([^}]*)}/g, function (keyword) {
+            const dest = template.replace(/{([^}]*)}/g, function (match) {
                 // Trim the curly braces.
-                var keyword = keyword.substr(1, keyword.length - 2).toLowerCase();
+                const keyword = match.slice(1, -1).toLowerCase();
 
                 // Handle special keywords
-                if (keyword == 'url')
+                if (keyword === 'url')
                     return encodeURIComponent(mailto);
-                if (keyword == 'args') {
+                if (keyword === 'args') {
                     let parts = [];
                     if (url.pathname.length) {
                         parts.push('to=' + encodeURIComponent(url.pathname));
                     }
                     if (url.search.length > 1) {
-                        parts.push(url.search.substr(1)); //remove ?
+                        parts.push(url.search.slice(1)); //remove ?
                     }
                     return parts.join('&');
                 }
-                if (keyword == 'to')
+                if (keyword === 'to')
                     return encodeURIComponent(url.pathname);
 
                 // Pull the rest from the mailto query string.
