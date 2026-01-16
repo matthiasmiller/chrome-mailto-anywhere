@@ -7,6 +7,7 @@
 1. Open `chrome://extensions` in Chrome
 1. Enable Developer Mode by clicking the toggle switch next to Developer mode in the far top-right of the window.
 1. Click the "Load unpacked" button and select the extension directory.
+1. After enabling it, open the "Mailto Anywhere" settings from the toolbar and configure it.
 
 ## Developer Instructions
 
