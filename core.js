@@ -17,35 +17,21 @@ const MailtoAnywhere = (function() {
             return PRESETS;
         },
 
-        getTemplate: function (callback) {
+        getSettings: function (callback) {
             chrome.storage.sync.get({
-                url: GOOGLE_DEFAULT
-            }, function (items) {
-                callback(items.url);
-            });
-        },
-
-        setTemplate: function (template, callback) {
-            chrome.storage.sync.set({
-                url: template
-            }, function() {
-                callback();
-            });
-        },
-
-        getOpenInNewWindow: function (callback) {
-            chrome.storage.sync.get({
+                url: GOOGLE_DEFAULT,
                 openInNewWindow: true
             }, function (items) {
-                callback(items.openInNewWindow);
+                callback({
+                    url: items.url,
+                    openInNewWindow: items.openInNewWindow
+                });
             });
         },
 
-        setOpenInNewWindow: function (openInNewWindow, callback) {
-            chrome.storage.sync.set({
-                openInNewWindow: openInNewWindow
-            }, function() {
-                callback();
+        setSettings: function (settings, callback) {
+            chrome.storage.sync.set(settings, function() {
+                if (callback) callback();
             });
         },
 

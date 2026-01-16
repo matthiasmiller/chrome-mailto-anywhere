@@ -49,21 +49,19 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     loadPresets();
-    MailtoAnywhere.getTemplate(function(template) {
-        document.getElementById('url').value = template;
+    MailtoAnywhere.getSettings(function(settings) {
+        document.getElementById('url').value = settings.url;
+        document.getElementById('openInNewWindow').checked = settings.openInNewWindow;
         refreshPreset();
         refreshPreview();
     });
 
-    MailtoAnywhere.getOpenInNewWindow(function(openInNewWindow) {
-        document.getElementById('openInNewWindow').checked = openInNewWindow;
-    });
-
     document.getElementById('save').addEventListener('click', function() {
-        MailtoAnywhere.setTemplate(document.getElementById('url').value, function() {
-            MailtoAnywhere.setOpenInNewWindow(document.getElementById('openInNewWindow').checked, function() {
-                window.close();
-            });
+        MailtoAnywhere.setSettings({
+            url: document.getElementById('url').value,
+            openInNewWindow: document.getElementById('openInNewWindow').checked
+        }, function() {
+            window.close();
         });
     })
 });
