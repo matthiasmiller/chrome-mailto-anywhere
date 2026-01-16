@@ -8,7 +8,8 @@ const MailtoAnywhere = (function() {
         'Google (Account #4)': 'https://mail.google.com/mail/u/3/?extsrc=mailto&url={URL}',
         'Google (Account #5)': 'https://mail.google.com/mail/u/4/?extsrc=mailto&url={URL}',
         'AOL': 'http://webmail.aol.com/Mail/ComposeMessage.aspx?{ARGS}',
-        'Yahoo! Mail': 'http://compose.mail.yahoo.com/?{ARGS}'
+        'Yahoo! Mail': 'http://compose.mail.yahoo.com/?{ARGS}',
+        'Outlook': 'https://outlook.office.com/mail/deeplink/compose/?mailtouri={URL}'
     }
 
     return {
