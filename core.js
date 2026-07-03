@@ -59,7 +59,12 @@ const MailtoAnywhere = (function() {
                     return encodeURIComponent(url.pathname);
 
                 // Pull the rest from the mailto query string.
-                return encodeURIComponent(url.searchParams.get(keyword) || '');
+                // Header names are case-insensitive (RFC 6068).
+                for (const [name, value] of url.searchParams) {
+                    if (name.toLowerCase() === keyword)
+                        return encodeURIComponent(value);
+                }
+                return '';
             });
             return dest;
         }
